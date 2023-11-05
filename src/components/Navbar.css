@@ -1,0 +1,20 @@
+/* src/components/Navbar.css */
+.navbar {
+    background-color: #333;
+    padding: 20px 0;
+  }
+  
+  .navbar .navbar-brand {
+    color: gold;
+    font-weight: bold;
+  }
+  
+  .navbar .navbar-toggler-icon,
+  .navbar .nav-link {
+    color: gold;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #ffd700; /* Change color on hover */
+  }
+  
