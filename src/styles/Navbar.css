@@ -1,0 +1,19 @@
+/* src/components/Navbar.css */
+.navbar {
+    background-color: rgba(211, 211, 211, 0.189);
+  }
+  
+  .navbar .navbar-brand {
+    color: gold;
+    font-weight: bold;
+  }
+  
+  .navbar .navbar-toggler-icon,
+  .navbar .nav-link {
+    color: gold;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #ffd700; /* Change color on hover */
+  }
+  

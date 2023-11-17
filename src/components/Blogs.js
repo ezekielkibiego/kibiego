@@ -1,17 +1,14 @@
+
 // src/components/Blogs.js
 import React from 'react';
+import '../styles/Blogs.css'
 
 function Blogs() {
   return (
-    <section id="blogs">
-      <div className="container">
-        <h2>Explore my Blogs</h2>
-        <p>
-            My Blogs
-        </p>
-        {/* Add more content as needed */}
-      </div>
-    </section>
+    <div className='container blogs'>
+      <h2>Blogs</h2>
+      {/* Your blogs content goes here */}
+    </div>
   );
 }
 
