@@ -51,7 +51,7 @@ function Contact() {
 
         {formSubmitted ? (
           <div className="thank-you-message">
-            <p>Thank you for contacting me! I will reach out to you soonest.</p>
+            <p>Thank you for contacting me! I will get back to you soonest.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
