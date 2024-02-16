@@ -1,64 +1,54 @@
 .cert-container {
-    padding: 20px;
-    color: #191528;
+  padding: 20px;
+  color: #191528;
+}
 
-  }
-  
-  .cert-header {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 30px;
-  }
-  
+.cert-header {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.cert-item {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+@media screen and (min-width: 769px) {
   .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .cert-item {
-    width: 100%;
-    border: 1px solid #ccc; /* Add border style */
-    border-radius: 5px; /* Add border radius for rounded corners */
-    padding: 10px; /* Add padding for spacing */
-  }
-  
-  @media screen and (max-width: 768px) {
-    .cert-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media screen and (min-width: 769px) and (max-width: 1200px) {
-    .cert-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  .cert-image {
-    max-width: 100%;
-  }
-  
-  .cert-title {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  
-  .linkedin-button {
-    
-    background-color: #191528;
-    color: white;
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-  
-  .linkedin-button:hover {
-    background-color: #fdc500;
-  }
-  
+}
+
+.cert-image {
+  max-width: 100%;
+}
+
+.cert-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.linkedin-button {
+  background-color: #191528;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.linkedin-button:hover {
+  background-color: #fdc500;
+}

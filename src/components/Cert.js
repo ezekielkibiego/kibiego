@@ -1,4 +1,3 @@
-// Cert.js
 import React from 'react';
 import '../styles/Cert.css';
 import cert1 from '../assets/agile.jpg';
@@ -22,62 +21,24 @@ import cert18 from '../assets/tips.png';
 
 function Certification() {
   const certifications = [
-    {
-      image: cert1
-      
-    },
-    {
-      image: cert2
-    },
-    {
-        image: cert3
-      },
-
-      {
-        image: cert4
-      },
-      {
-        image: cert5
-      },
-      {
-        image: cert6
-      },
-      {
-        image: cert7
-      },
-      {
-        image: cert8
-      },
-      {
-        image: cert9
-      },
-      {
-        image: cert10
-      },
-      {
-        image: cert11
-      },
-      {
-        image: cert12
-      },
-      {
-        image: cert13
-      },
-      {
-        image: cert14
-      },
-      {
-        image: cert15
-      },
-      {
-        image: cert16
-      },
-      {
-        image: cert17
-      },
-      {
-        image: cert18
-      }
+    { image: cert1 },
+    { image: cert2 },
+    { image: cert3 },
+    { image: cert4 },
+    { image: cert5 },
+    { image: cert6 },
+    { image: cert7 },
+    { image: cert8 },
+    { image: cert9 },
+    { image: cert10 },
+    { image: cert11 },
+    { image: cert12 },
+    { image: cert13 },
+    { image: cert14 },
+    { image: cert15 },
+    { image: cert16 },
+    { image: cert17 },
+    { image: cert18 }
   ];
 
   return (
