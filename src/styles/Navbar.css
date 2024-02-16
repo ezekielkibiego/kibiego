@@ -1,19 +1,134 @@
-/* src/components/Navbar.css */
+/* Navbar.css */
 .navbar {
-    background-color: rgba(211, 211, 211, 0.189);
+  background-color: #191528; 
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-toggler {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: none;
+}
+
+.navbar-toggler span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.navbar-links {
+  display: flex;
+}
+
+.navbar-links.active {
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background-color: #191528;
+  padding: 10px 0;
+  box-shadow: 0px 8px 16px ;
+  z-index: 1000;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  color: white; 
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fdc500; 
+}
+
+.nav-link.active {
+  transition: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggler {
+    display: block;
   }
-  
-  .navbar .navbar-brand {
-    color: gold;
-    font-weight: bold;
+
+  .navbar-links {
+    display: none;
   }
-  
-  .navbar .navbar-toggler-icon,
-  .navbar .nav-link {
-    color: gold;
+
+  .navbar-links.active {
+    display: flex;
   }
-  
-  .navbar .nav-link:hover {
-    color: #ffd700; /* Change color on hover */
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
+
+  .nav-item {
+    margin: 10px 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-links {
+    display: flex !important;
+    position: relative !important;
+    flex-direction: row !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-links.active {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+  }
+
+  .nav-item {
+    margin: 0 15px;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+}
+.navbar.sticky {
+  position: fixed;
+  top: -10px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow when sticky */
+  background-color: #191528; /* Sticky background color */
+  height: 50px;
   
+}

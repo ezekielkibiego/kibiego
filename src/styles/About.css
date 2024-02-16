@@ -1,4 +1,44 @@
 .about h2{
-    margin-top: 150px;
-    margin-bottom: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #191528;
+
 }
+
+/* About.css */
+
+.about {
+    font-family: Arial, Helvetica, sans-serif; /* Set the font family */
+    color: #333; /* Set the text color */
+  }
+  
+  .about h2 {
+    font-size: 2rem; /* Set the heading font size */
+    margin-bottom: 1rem; /* Add spacing below the heading */
+  }
+  
+  .about p {
+    margin-bottom: 1rem; /* Add spacing below paragraphs */
+  }
+  
+  .about ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin-bottom: 1rem; /* Add spacing below lists */
+  }
+  
+  .about ul li {
+    margin-bottom: 0.5rem; /* Add spacing between list items */
+  }
+  
+  .about ul li::before {
+    content: "•"; /* Use a bullet point as list item marker */
+    margin-right: 0.5rem; /* Add spacing between bullet point and text */
+    color: #007bff; /* Set bullet point color */
+  }
+  
+  .about ul li:last-child {
+    margin-bottom: 0; /* Remove bottom margin from last list item */
+  }
+  

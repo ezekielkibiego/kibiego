@@ -1,4 +1,42 @@
-.exp h2{
-    margin-top: 150px;
-    margin-bottom: 60px;
-}
+
+  
+  .experience-entry, .repo-entry {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .company-logo {
+    max-width: 80px;
+  }
+ 
+  
+  .repo-entry h3 {
+    margin-top: 0;
+  }
+  
+  .repo-entry p {
+    margin-top: 10px;
+  }
+  
+ /* Exp.css */
+
+/* Exp.css */
+
+.repo-entry .repo-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #191528;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .repo-entry .repo-link:hover {
+    background-color: #fdc500;
+  }
+  
+  

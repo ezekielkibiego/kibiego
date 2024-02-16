@@ -37,7 +37,6 @@ function Contact() {
         });
       } else {
         console.error('Form submission failed!');
-        // Handle the error, e.g., show an error message to the user.
       }
     } catch (error) {
       console.error('Error submitting form:', error);

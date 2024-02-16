@@ -1,42 +1,79 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/eklogo.png';
 import '../styles/Navbar.css'; 
 
 function Navbar() {
+  const [isSticky, setIsSticky] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    if (window.innerWidth <= 768) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="navbar navbar-expand-lg position-fixed top-0" style={{ width: '100%', zIndex: '1000' }}>
+    <nav className={`navbar ${isSticky ? 'sticky' : ''}`}>
       <div className="container">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/" onClick={closeMenu}>
           <img src={logo} alt="Logo" style={{ maxWidth: '50px' }} />
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
+        <button className={`navbar-toggler ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+        <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
+          <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className="nav-link" to="/about" onClick={closeMenu}>
                 About
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/experience">
+              <Link className="nav-link" to="/experience" onClick={closeMenu}>
                 Experience
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/skills">
+              <Link className="nav-link" to="/skills" onClick={closeMenu}>
                 Skills
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/blogs">
+              <Link className="nav-link" to="/certifications" onClick={closeMenu}>
+                Certifications
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/blogs" onClick={closeMenu}>
                 Blogs
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">
+              <Link className="nav-link" to="/contact" onClick={closeMenu}>
                 Contact
               </Link>
             </li>
