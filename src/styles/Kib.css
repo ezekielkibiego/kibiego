@@ -1,18 +1,24 @@
-/* Kib.css */
 .kib h2 {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 30px;
     font-weight: 900;
     font-size: 100px;
     color: #191528;
-}
-.container.kib {
+
+  }
+  
+  @media screen and (max-width: 768px) {
+    .kib h2 {
+      font-size: 64px; /* Adjust the font size for smaller screens */
+    }
+  }
+  
+  .container.kib {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-
-
+    margin-bottom: 30px;
   }
   
   .highlights-container {
@@ -20,7 +26,6 @@
     flex-wrap: wrap;
     justify-content: center;
     color: #191528;
-
   }
   
   .highlight {
@@ -31,7 +36,6 @@
     font-size: x-large;
     font-weight: 700;
     margin-bottom: 40px;
-
   }
   
   @keyframes moveHighlights {
