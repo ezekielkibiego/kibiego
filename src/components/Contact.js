@@ -35,6 +35,8 @@ function Contact() {
           email: '',
           message: '',
         });
+        // Hide the message after 5 seconds
+        setTimeout(() => setFormSubmitted(false), 5000);
       } else {
         console.error('Form submission failed!');
       }
@@ -44,11 +46,9 @@ function Contact() {
   };
 
   return (
-    <section id="contact">
-      <div className="container contact">
+    <section id="contact" className="contact-section">
+      <div className="container">
         <h2>Contact Me</h2>
-        
-
         {formSubmitted ? (
           <div className="thank-you-message">
             <p>Thank you for contacting me! I will get back to you soonest.</p>
