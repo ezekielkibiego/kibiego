@@ -3,14 +3,11 @@
   margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
-  color: #191528;
+  /* color: #191528; */
 
  
 }
-.blogs{
-  color: #191528;
 
-}
 
 .blog-grid {
     display: grid;

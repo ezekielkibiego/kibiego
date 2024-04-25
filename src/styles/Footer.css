@@ -1,3 +1,28 @@
+/* Footer.css */
+
 .footer {
-    background-color: #191528; /* Updated background color */
-  }
+  position: relative;
+}
+
+.footer-line {
+  border: none;
+  border-top: 1px solid #ddd; /* Default color of the line */
+  width: 100%;
+}
+
+.light .footer-line {
+  border-top-color: #333; /* Color of the line in light theme */
+}
+
+.dark .footer-line {
+  border-top-color: #fff; /* Color of the line in dark theme */
+}
+/* Footer.css */
+
+.theme-light-link {
+  color: #333; /* Link color for light theme */
+}
+
+.theme-dark-link {
+  color: #fff; /* Link color for dark theme */
+}

@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+// Navbar.js
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/eklogo.png';
 import '../styles/Navbar.css'; 
+import { ThemeContext } from "../context/ThemeContext";
+import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 
 function Navbar() {
+  const { theme, handleThemeChange } = useContext(ThemeContext);
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,7 +39,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={`navbar ${isSticky ? 'sticky' : ''}`}>
+    <nav className={`navbar ${isSticky ? 'sticky' : ''} ${theme}`}>
       <div className="container">
         <Link className="navbar-brand" to="/" onClick={closeMenu}>
           <img src={logo} alt="Logo" style={{ maxWidth: '50px' }} />
@@ -78,6 +82,13 @@ function Navbar() {
               </Link>
             </li>
           </ul>
+          <button className="theme-button" onClick={handleThemeChange}>
+            {theme === "light" ? (
+              <HiOutlineMoon className="theme-icon" /> 
+            ) : (
+              <HiOutlineSun className="theme-icon" /> 
+            )}
+          </button>
         </div>
       </div>
     </nav>

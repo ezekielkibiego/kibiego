@@ -2,7 +2,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
-    color: #191528;
+    /* color: #191528; */
 
 }
 
@@ -10,7 +10,7 @@
 
 .about {
     font-family: Arial, Helvetica, sans-serif; /* Set the font family */
-    color: #333; /* Set the text color */
+   
   }
   
   .about h2 {

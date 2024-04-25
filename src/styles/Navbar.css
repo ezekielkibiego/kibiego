@@ -1,6 +1,4 @@
-/* Navbar.css */
 .navbar {
-  background-color: #191528; 
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -8,9 +6,7 @@
   padding: 0 20px;
 }
 
-
 .navbar-brand {
-  color: white;
   font-weight: bold;
   text-decoration: none;
 }
@@ -27,7 +23,6 @@
   display: block;
   width: 25px;
   height: 2px;
-  background-color: white;
   margin-bottom: 5px;
 }
 
@@ -41,9 +36,8 @@
   top: 50px;
   left: 0;
   width: 100%;
-  background-color: #191528;
   padding: 10px 0;
-  box-shadow: 0px 8px 16px ;
+  box-shadow: 0px 8px 16px;
   z-index: 1000;
 }
 
@@ -59,13 +53,13 @@
 }
 
 .nav-link {
-  color: white; 
   text-decoration: none;
   transition: color 0.3s ease;
+  color: inherit; /* Ensure that the color is inherited from the parent */
 }
 
 .nav-link:hover {
-  color: #fdc500; 
+  color: #fdc500;
 }
 
 .nav-link.active {
@@ -83,18 +77,33 @@
 
   .navbar-links.active {
     display: flex;
+    background-color: whitesmoke; /* Background color for active menu */
+    flex-direction: column; /* Change flex direction to column */
+    align-items: center; /* Center align items */
   }
 
   .navbar-nav {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 0; /* Remove default padding */
   }
 
   .nav-item {
     margin: 10px 0;
   }
+
+  .theme-button {
+    margin-top: 10px; /* Adjust top margin */
+  }
+
+  /* Styling for dark mode */
+  .dark .navbar-links.active {
+    background-color: black; /* Dark mode background color for active menu */
+  }
 }
+
+
 
 @media (min-width: 769px) {
   .navbar-links {
@@ -113,6 +122,7 @@
   .navbar-nav {
     flex-direction: row !important;
     justify-content: flex-end !important;
+    
   }
 
   .nav-item {
@@ -123,12 +133,76 @@
     display: none;
   }
 }
+
 .navbar.sticky {
   position: fixed;
   top: -10px;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow when sticky */
-  background-color: #191528; /* Sticky background color */
   height: 50px;
-  
+}
+
+.theme-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-button:hover {
+  transform: scale(1.1); /* Increase size on hover */
+}
+
+.theme-icon {
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.light .theme-icon {
+  color: black; /* Icon color for light theme */
+}
+
+.dark .theme-icon {
+  color: #fff; /* Icon color for dark theme */
+}
+
+.dark .navbar {
+  background-color: black; /* Background color for dark theme */
+  color: #fff; /* Text color for dark theme */
+}
+
+.dark .navbar a.nav-link {
+  color: #fff; /* Text color for dark theme navbar links */
+}
+
+.navbar.sticky.dark {
+  background-color: black; /* Background color for dark theme when sticky */
+  color: #fff; /* Text color for dark theme when sticky */
+}
+
+
+
+
+
+
+.navbar-toggler span:nth-child(2) {
+  margin-top: 5px; /* Adjust spacing between lines */
+}
+
+.navbar-toggler span:last-child {
+  margin-bottom: 0; /* Ensure proper spacing between lines */
+}
+
+/* Styling for light theme */
+
+
+.light .navbar-toggler span {
+  background-color: black; /* Color for light theme */
+}
+
+/* Styling for dark theme */
+.dark .navbar-toggler span {
+  background-color: #fff; /* Color for dark theme */
 }

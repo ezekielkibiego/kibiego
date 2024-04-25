@@ -11,9 +11,19 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Cert from './components/Cert';
 import NotFoundPage from './components/NotFoundPage'; // Import the NotFoundPage component
+import { ThemeContext } from "./context/ThemeContext";
+import { useContext } from "react";
 
 function App() {
+  const {theme} = useContext(ThemeContext);
+
+  const backgroundColor = {
+    backgroundColor: theme === 'light' ? 'white' : 'black',
+    color: theme === 'light' ? 'black' : 'white' 
+  };
+
   return (
+    <main style={backgroundColor}>
     <Router>
       <Navbar />
       <Routes>
@@ -28,6 +38,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </main>
   );
 }
 
