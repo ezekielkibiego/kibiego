@@ -1,44 +1,66 @@
-/* Skills.css */
-
 .skills-section {
-    padding: 50px 0;
-  }
-  
-  .section-heading {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .skill-item {
-    margin: 10px;
-    text-align: center;
-  }
-  
-  .skill-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .skill-level {
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  /* Level-specific colors */
-  .skill-level[style*="background-color: red"] { background-color: #ff5733; }
-  .skill-level[style*="background-color: orange"] { background-color: #ffa833; }
-  .skill-level[style*="background-color: green"] { background-color: #28a745; }
-  .skill-level[style*="background-color: blue"] { background-color: #007bff; }
-  
-  
+  min-height: 100vh;
+  padding: 50px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.skill-item {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.skill-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.skill-level {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Skill Level Colors */
+.skill-level-beginner {
+  background-color: #ff7b54; /* Light Red */
+}
+
+.skill-level-intermediate {
+  background-color: #ff9a76; /* Light Orange */
+}
+
+.skill-level-advanced {
+  background-color: #66bb6a; /* Light Green */
+}
+
+.skill-level-expert {
+  background-color: #5f9be1; /* Light Blue */
+}

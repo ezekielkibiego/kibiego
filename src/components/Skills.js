@@ -60,7 +60,7 @@ function Skills() {
             </div>
           ))}
         </div>
-        <h2 className="section-heading">Soft Skills</h2>
+        <h2 className="section-heading mt-5 mb-5">Soft Skills</h2>
         <div className="skills-container">
           {softSkills.map((skill, index) => (
             <div className="skill-item" key={index}>

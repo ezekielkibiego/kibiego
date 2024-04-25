@@ -1,5 +1,4 @@
-// Navbar.js
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/eklogo.png';
 import '../styles/Navbar.css'; 
@@ -8,7 +7,6 @@ import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 
 function Navbar() {
   const { theme, handleThemeChange } = useContext(ThemeContext);
-  const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -21,25 +19,8 @@ function Navbar() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 0) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <nav className={`navbar ${isSticky ? 'sticky' : ''} ${theme}`}>
+    <nav className={`navbar ${theme}`}>
       <div className="container">
         <Link className="navbar-brand" to="/" onClick={closeMenu}>
           <img src={logo} alt="Logo" style={{ maxWidth: '50px' }} />
