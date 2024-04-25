@@ -25,6 +25,13 @@ function Navbar() {
         <Link className="navbar-brand" to="/" onClick={closeMenu}>
           <img src={logo} alt="Logo" style={{ maxWidth: '50px' }} />
         </Link>
+        <button className="theme-button" onClick={handleThemeChange}>
+            {theme === "light" ? (
+              <HiOutlineMoon className="theme-icon" /> 
+            ) : (
+              <HiOutlineSun className="theme-icon" /> 
+            )}
+          </button>
         <button className={`navbar-toggler ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
@@ -63,13 +70,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <button className="theme-button" onClick={handleThemeChange}>
-            {theme === "light" ? (
-              <HiOutlineMoon className="theme-icon" /> 
-            ) : (
-              <HiOutlineSun className="theme-icon" /> 
-            )}
-          </button>
+          
         </div>
       </div>
     </nav>
