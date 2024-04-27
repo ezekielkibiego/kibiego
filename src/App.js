@@ -13,6 +13,9 @@ import Cert from './components/Cert';
 import NotFoundPage from './components/NotFoundPage'; // Import the NotFoundPage component
 import { ThemeContext } from "./context/ThemeContext";
 import { useContext } from "react";
+import BlogListPage from './components/BlogList';
+import BlogDetailsPage from './components/BlogDetail';
+import CreateBlogPage from './components/AddBlog';
 
 function App() {
   const {theme} = useContext(ThemeContext);
@@ -34,6 +37,9 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/certifications" element={<Cert />} />
+        <Route path="/blog" element={<BlogListPage />} />
+        <Route path="/blog/:id" element={<BlogDetailsPage />} />
+        <Route path="/create-blog" element={<CreateBlogPage />} />
         <Route path="*" element={<NotFoundPage />} /> {/* Fallback route */}
       </Routes>
       <Footer />
