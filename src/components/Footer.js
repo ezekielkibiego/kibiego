@@ -15,7 +15,7 @@ function Footer() {
             <p>Email: kibiezekiel@gmail.com</p>
             <p>Phone: +254722991833</p> {/* Added phone number */}
             <a
-              href="https://drive.google.com/file/d/1Zqj-HjPGn28NewYr44xRvpwKt4X7e_vO/view?usp=sharing"
+              href="https://drive.google.com/file/d/14VW2oa38tCGXmxo8FXajNivUIi-ulcex/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className={`theme-${theme}-link text-decoration-none` } // Dynamic class for link color
