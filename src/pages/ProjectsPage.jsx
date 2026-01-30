@@ -177,7 +177,7 @@ const ProjectsPage = () => {
         />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl relative z-10 pt-16 pb-16">
+      <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl relative z-10 pt-12 pb-16">
         {/* Hero Section */}
         <Motion.section
           initial={{ opacity: 0, y: 20 }}
