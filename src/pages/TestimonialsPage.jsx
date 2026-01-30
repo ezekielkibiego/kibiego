@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { FiMessageCircle, FiLinkedin, FiChevronLeft, FiChevronRight, FiAward, FiUsers } from 'react-icons/fi';
 
 const TestimonialsPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const handlePrev = useCallback(() => {
+    setActiveIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setActiveIndex(prev => (prev + 1) % testimonials.length);
+  }, []);
+
+  const handleSelectTestimonial = useCallback((index) => {
+    setActiveIndex(index);
+  }, []);
 
   const testimonials = [
     {
@@ -103,14 +115,6 @@ const TestimonialsPage = () => {
       text: 'text-pink-400',
       glow: 'shadow-pink-500/20'
     }
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const activeTestimonial = testimonials[activeIndex];
@@ -268,7 +272,7 @@ const TestimonialsPage = () => {
               {testimonials.map((_, index) => (
                 <Motion.button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleSelectTestimonial(index)}
                   className={`transition-all duration-300 rounded-full will-change-transform ${
                     index === activeIndex
                       ? `${colors.bg} w-8 h-2 border ${colors.border}`
@@ -306,7 +310,7 @@ const TestimonialsPage = () => {
                 key={testimonial.id}
                 className={`relative p-8 bg-gradient-to-br from-card-background via-card-background/95 to-card-background/80 backdrop-blur-xl border-2 ${cardColors.border} rounded-3xl shadow-2xl hover:${cardColors.glow} cursor-pointer overflow-hidden will-change-transform`}
                 whileHover={{ y: -5, scale: 1.01 }}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleSelectTestimonial(index)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 + index * 0.08, duration: 0.4 }}

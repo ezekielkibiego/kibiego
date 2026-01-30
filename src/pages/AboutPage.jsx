@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { 
   FiArrowRight, FiLayers, FiZap, FiHeart, FiCode, FiServer, FiCpu, FiDatabase, FiShield, FiUsers, FiStar
@@ -220,13 +220,13 @@ const AboutPage = () => {
   }, [isAutoRotating]);
 
   // Stop auto-rotation when user clicks
-  const handleManualSelection = (area) => {
+  const handleManualSelection = useCallback((area) => {
     setIsAutoRotating(false);
     setSelectedArea(area);
     
     // Resume auto-rotation after 10 seconds of inactivity
     setTimeout(() => setIsAutoRotating(true), 10000);
-  };
+  }, []);
 
   const colorVariants = {
     'sky-500': 'bg-sky-500',
