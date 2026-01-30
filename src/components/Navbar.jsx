@@ -7,11 +7,10 @@ import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi';
 import logo from '../../public/images/kiblogo.png';
 
 // Memoized NavItem component to prevent re-renders
-const NavItem = memo(({ link, activeLinkStyle, navLinkClasses }) => (
+const NavItem = memo(({ link, navLinkClasses }) => (
   <NavLink
     to={link.path}
-    style={({ isActive }) => (isActive ? activeLinkStyle : {})}
-    className={navLinkClasses}
+    className={({ isActive }) => `${navLinkClasses} ${isActive ? 'nav-link-active' : ''}`}
   >
     {link.name}
   </NavLink>
@@ -20,12 +19,11 @@ const NavItem = memo(({ link, activeLinkStyle, navLinkClasses }) => (
 NavItem.displayName = 'NavItem';
 
 // Memoized Mobile NavItem component
-const MobileNavItem = memo(({ link, activeLinkStyle, onNavigate }) => (
+const MobileNavItem = memo(({ link, onNavigate }) => (
   <NavLink
     to={link.path}
     onClick={onNavigate}
-    style={({ isActive }) => (isActive ? activeLinkStyle : {})}
-    className="w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform"
+    className={({ isActive }) => `w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform ${isActive ? 'nav-link-active' : ''}`}
   >
     {link.name}
   </NavLink>
@@ -46,11 +44,6 @@ const Navbar = () => {
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Contact', path: '/contact' },
   ], []);
-  
-  const activeLinkStyle = useMemo(() => ({
-    color: 'var(--color-primary)',
-    transform: 'scale(1.05)',
-  }), []);
 
   const navLinkClasses = "text-lg hover:text-primary transition-colors duration-300 will-change-colors";
   
@@ -58,13 +51,7 @@ const Navbar = () => {
     setIsOpen(false);
   }, []);
 
-  const handleToggleMenu = useCallback(() => {
-    setIsOpen(prev => !prev);
-  }, []);
-
   return (
-    // The header is now "sticky" instead of "fixed".
-    // This allows it to be part of the document flow and push content down.
     <header className="sticky top-0 left-0 right-0 z-40 bg-background/90 backdrop-blur-lg shadow-md">
       <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl">
         <div className="flex items-center justify-between h-20">
@@ -76,7 +63,6 @@ const Navbar = () => {
               <NavItem
                 key={link.name}
                 link={link}
-                activeLinkStyle={activeLinkStyle}
                 navLinkClasses={navLinkClasses}
               />
             ))}
@@ -121,14 +107,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile navigation menu that expands downwards */}
       <div className={`transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${isOpen ? 'max-h-screen border-t border-cyan-500/40' : 'max-h-0'}`}>
         <nav className="container mx-auto px-6 py-4 flex flex-col items-center space-y-2">
           {navLinks.map((link) => (
             <MobileNavItem
               key={link.name}
               link={link}
-              activeLinkStyle={activeLinkStyle}
               onNavigate={handleMobileNavClick}
             />
           ))}
