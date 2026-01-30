@@ -1,0 +1,49 @@
+/* This imports Tailwind's base styles and utilities */
+@import "tailwindcss";
+
+/* Define all theme colors as CSS variables.
+  :root represents the default (light) theme.
+*/
+:root {
+  --color-background: #ffffff;
+  --color-text-primary: #111827;   /* gray-900 */
+  --color-text-secondary: #6b7280; /* gray-500 */
+  --color-border: #e5e7eb;         /* gray-200 */
+  --color-card-background: #f9fafb;/* gray-50 */
+  
+  --color-primary: #0ea5e9;        /* sky-500 */
+  --color-primary-hover: #0284c7;  /* sky-600 */
+}
+
+/* When the <html> tag has the "dark" class,
+  we override the variables with dark mode values.
+*/
+.dark {
+  --color-background: #111827;   /* gray-900 */
+  --color-text-primary: #f9fafb;   /* gray-50 */
+  --color-text-secondary: #9ca3af; /* gray-400 */
+  --color-border: #374151;         /* gray-700 */
+  --color-card-background: #1f2937;/* gray-800 */
+
+  --color-primary: #38bdf8;        /* sky-400 */
+  --color-primary-hover: #0ea5e9;  /* sky-500 */
+}
+
+/* Apply the base background and text color to the body
+  so the whole app inherits it.
+*/
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Optimized float animation for background orbs */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
