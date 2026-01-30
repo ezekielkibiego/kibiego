@@ -2,6 +2,79 @@ import React, { useState, useCallback } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { FiMessageCircle, FiLinkedin, FiChevronLeft, FiChevronRight, FiAward, FiUsers } from 'react-icons/fi';
 
+const testimonials = [
+  {
+    id: 1,
+    name: 'Jesse Karanja',
+    role: 'Co-Founder at Zindua School and Chaptr Global',
+    relationship: 'Manager',
+    date: 'January 2, 2025',
+    text: "I have had the pleasure of working closely with Ezekiel over the past two years, during which he has been an exceptional Lead for the Software Development Department at Zindua School. Working with him has been nothing short of delightful—he brings a rare blend of professionalism, reliability, and calm leadership that makes collaboration easy and enjoyable. Ezekiel has an incredible ability to take ownership of his roles, executing them with dedication and a willingness to continuously improve. His openness to feedback and adaptability have been key in driving the team forward. Under his leadership, the software team has achieved remarkable milestones, including significant curriculum updates and enhanced class delivery. These improvements are clearly reflected in the quality of graduates we now produce—a testament to Ezekiel's vision and hard work. What stands out most about Ezekiel is his dependability. You can count on him for anything, even tasks that go beyond his immediate responsibilities. His willingness to step up and be available is unmatched and speaks volumes about his commitment to the team and the school. It's been an honor to work alongside him.",
+    highlight: 'Exceptional leadership and reliability',
+    color: 'cyan'
+  },
+  {
+    id: 2,
+    name: 'Joan Kirui',
+    role: 'Software Developer',
+    relationship: 'Classmate at Moringa School',
+    date: 'March 17, 2023',
+    text: "I highly recommend Ezekiel Kibiego for any software development role. I had the pleasure of studying with him at Moringa School, and he consistently demonstrated a strong understanding of software development principles and a dedication to producing high-quality code. Throughout our time together, Ezekiel consistently showed strong problem-solving skills, an eagerness to learn, and excellent communication skills. He was always willing to collaborate with others and provided valuable insights and suggestions during group projects. Moreover, Ezekiel is a highly motivated and focused individual who takes pride in his work. He is reliable, responsible, and always meets deadlines. I am confident that he would be a valuable asset to any team he joins.",
+    highlight: 'Strong problem-solving and collaboration',
+    color: 'blue'
+  },
+  {
+    id: 3,
+    name: 'Frederico Carvalho',
+    role: 'Learning & Development at Bringglobal',
+    relationship: 'Manager',
+    date: 'February 2, 2023',
+    text: "I have had the pleasure of working with Ezekiel Kibiego as part of the Bringglobal team in the Information Technologies department. He was an invaluable asset to the team, delivering good work and contributing to the success of our projects. Ezekiel possesses a unique combination of technical skills and problem-solving abilities that allowed him to understand and develop creative solutions. He was always eager to lend a hand and support colleagues, demonstrating a strong team spirit and a positive attitude. I would highly recommend Ezekiel for any future endeavors, as he has proven to be a reliable and competent professional.",
+    highlight: 'Technical excellence and team spirit',
+    color: 'purple'
+  },
+  {
+    id: 4,
+    name: 'Mary Njenga',
+    role: 'Software Engineer',
+    relationship: 'Classmate at Moringa School',
+    date: 'January 22, 2023',
+    text: "Ezekiel is a highly talented software developer who is not only skilled in coding but also in understanding the business needs of the project. He is a team player who is always willing to go the extra mile to ensure the project is delivered on time and to the highest standard. He is also an excellent communicator and always able to explain complex technical issues to non-technical team members in a clear and concise manner. His ability to work under pressure and handle multiple tasks simultaneously is truly impressive. I highly recommend Ezekiel for any software development position. He has the skills, drive, and dedication to excel in any role and will be a valuable asset to any team.",
+    highlight: 'Business acumen and communication',
+    color: 'pink'
+  },
+  {
+    id: 5,
+    name: 'Kennedy Mwenga',
+    role: 'Networking - Cybersecurity - APIs',
+    relationship: 'Colleague',
+    date: 'January 25, 2023',
+    text: "Ezekiel Kibiego is capable of working with people, managing their time effectively, and taking initiative when necessary. He has also shown an ability to work well under pressure and meet deadlines.",
+    highlight: 'Time management and initiative',
+    color: 'blue'
+  },
+  {
+    id: 6,
+    name: 'Lucy Wambui',
+    role: 'Technical mentor at Moringa School',
+    relationship: 'Teacher',
+    date: 'January 25, 2023',
+    text: "Very Committed and professional with a growth mindset.",
+    highlight: 'Growth mindset and professionalism',
+    color: 'purple'
+  },
+  {
+    id: 7,
+    name: 'Diana Mongina',
+    role: 'Building a Neobank for Global Gig Workers',
+    relationship: 'Classmate at Moringa School',
+    date: 'January 22, 2023',
+    text: "Ezekiel is highly skilled in a variety of programming languages, including Java, python, javascript, and Ruby on Rails, and is always willing to learn new technologies to tackle any project that comes their way. They are a true team player, always willing to lend a helping hand and share their knowledge with their colleagues. In addition to their technical skills, Ezekiel is also an effective communicator and able to explain complex technical concepts in a clear and concise manner. They are able to work well under pressure and consistently deliver high-quality work on time.",
+    highlight: 'Versatile technical skills',
+    color: 'cyan'
+  }
+];
+
 const TestimonialsPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -16,79 +89,6 @@ const TestimonialsPage = () => {
   const handleSelectTestimonial = useCallback((index) => {
     setActiveIndex(index);
   }, []);
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Jesse Karanja',
-      role: 'Co-Founder at Zindua School and Chaptr Global',
-      relationship: 'Manager',
-      date: 'January 2, 2025',
-      text: "I have had the pleasure of working closely with Ezekiel over the past two years, during which he has been an exceptional Lead for the Software Development Department at Zindua School. Working with him has been nothing short of delightful—he brings a rare blend of professionalism, reliability, and calm leadership that makes collaboration easy and enjoyable. Ezekiel has an incredible ability to take ownership of his roles, executing them with dedication and a willingness to continuously improve. His openness to feedback and adaptability have been key in driving the team forward. Under his leadership, the software team has achieved remarkable milestones, including significant curriculum updates and enhanced class delivery. These improvements are clearly reflected in the quality of graduates we now produce—a testament to Ezekiel's vision and hard work. What stands out most about Ezekiel is his dependability. You can count on him for anything, even tasks that go beyond his immediate responsibilities. His willingness to step up and be available is unmatched and speaks volumes about his commitment to the team and the school. It's been an honor to work alongside him.",
-      highlight: 'Exceptional leadership and reliability',
-      color: 'cyan'
-    },
-    {
-      id: 2,
-      name: 'Joan Kirui',
-      role: 'Software Developer',
-      relationship: 'Classmate at Moringa School',
-      date: 'March 17, 2023',
-      text: "I highly recommend Ezekiel Kibiego for any software development role. I had the pleasure of studying with him at Moringa School, and he consistently demonstrated a strong understanding of software development principles and a dedication to producing high-quality code. Throughout our time together, Ezekiel consistently showed strong problem-solving skills, an eagerness to learn, and excellent communication skills. He was always willing to collaborate with others and provided valuable insights and suggestions during group projects. Moreover, Ezekiel is a highly motivated and focused individual who takes pride in his work. He is reliable, responsible, and always meets deadlines. I am confident that he would be a valuable asset to any team he joins.",
-      highlight: 'Strong problem-solving and collaboration',
-      color: 'blue'
-    },
-    {
-      id: 3,
-      name: 'Frederico Carvalho',
-      role: 'Learning & Development at Bringglobal',
-      relationship: 'Manager',
-      date: 'February 2, 2023',
-      text: "I have had the pleasure of working with Ezekiel Kibiego as part of the Bringglobal team in the Information Technologies department. He was an invaluable asset to the team, delivering good work and contributing to the success of our projects. Ezekiel possesses a unique combination of technical skills and problem-solving abilities that allowed him to understand and develop creative solutions. He was always eager to lend a hand and support colleagues, demonstrating a strong team spirit and a positive attitude. I would highly recommend Ezekiel for any future endeavors, as he has proven to be a reliable and competent professional.",
-      highlight: 'Technical excellence and team spirit',
-      color: 'purple'
-    },
-    {
-      id: 4,
-      name: 'Mary Njenga',
-      role: 'Software Engineer',
-      relationship: 'Classmate at Moringa School',
-      date: 'January 22, 2023',
-      text: "Ezekiel is a highly talented software developer who is not only skilled in coding but also in understanding the business needs of the project. He is a team player who is always willing to go the extra mile to ensure the project is delivered on time and to the highest standard. He is also an excellent communicator and always able to explain complex technical issues to non-technical team members in a clear and concise manner. His ability to work under pressure and handle multiple tasks simultaneously is truly impressive. I highly recommend Ezekiel for any software development position. He has the skills, drive, and dedication to excel in any role and will be a valuable asset to any team.",
-      highlight: 'Business acumen and communication',
-      color: 'pink'
-    },
-    {
-      id: 5,
-      name: 'Kennedy Mwenga',
-      role: 'Networking - Cybersecurity - APIs',
-      relationship: 'Colleague',
-      date: 'January 25, 2023',
-      text: "Ezekiel Kibiego is capable of working with people, managing their time effectively, and taking initiative when necessary. He has also shown an ability to work well under pressure and meet deadlines.",
-      highlight: 'Time management and initiative',
-      color: 'blue'
-    },
-    {
-      id: 6,
-      name: 'Lucy Wambui',
-      role: 'Technical mentor at Moringa School',
-      relationship: 'Teacher',
-      date: 'January 25, 2023',
-      text: "Very Committed and professional with a growth mindset.",
-      highlight: 'Growth mindset and professionalism',
-      color: 'purple'
-    },
-    {
-      id: 7,
-      name: 'Diana Mongina',
-      role: 'Building a Neobank for Global Gig Workers',
-      relationship: 'Classmate at Moringa School',
-      date: 'January 22, 2023',
-      text: "Ezekiel is highly skilled in a variety of programming languages, including Java, python, javascript, and Ruby on Rails, and is always willing to learn new technologies to tackle any project that comes their way. They are a true team player, always willing to lend a helping hand and share their knowledge with their colleagues. In addition to their technical skills, Ezekiel is also an effective communicator and able to explain complex technical concepts in a clear and concise manner. They are able to work well under pressure and consistently deliver high-quality work on time.",
-      highlight: 'Versatile technical skills',
-      color: 'cyan'
-    }
-  ];
 
   const colorClasses = {
     cyan: {
