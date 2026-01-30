@@ -1,35 +1,47 @@
 // FILE: src/components/Navbar.jsx
 
-import React, { useState, useMemo, useCallback, memo } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState, useMemo, useCallback, memo, startTransition } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi';
 import logo from '../../public/images/kiblogo.png';
 
 // Memoized NavItem component to prevent re-renders
-const NavItem = memo(({ link, navLinkClasses }) => (
-  <NavLink
-    to={link.path}
-    className={({ isActive }) => `${navLinkClasses} ${isActive ? 'nav-link-active' : ''}`}
-  >
-    {link.name}
-  </NavLink>
-));
+const NavItem = memo(({ link, className, onNavigate }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isActive = location.pathname === link.path;
+
+  const handleClick = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      if (location.pathname !== link.path) {
+        startTransition(() => {
+          navigate(link.path);
+        });
+      }
+
+      if (onNavigate) {
+        onNavigate();
+      }
+    },
+    [location.pathname, link.path, navigate, onNavigate]
+  );
+
+  return (
+    <a
+      href={link.path}
+      onClick={handleClick}
+      className={`${className} ${isActive ? 'nav-link-active' : ''}`}
+      aria-current={isActive ? 'page' : undefined}
+    >
+      {link.name}
+    </a>
+  );
+});
 
 NavItem.displayName = 'NavItem';
-
-// Memoized Mobile NavItem component
-const MobileNavItem = memo(({ link, onNavigate }) => (
-  <NavLink
-    to={link.path}
-    onClick={onNavigate}
-    className={({ isActive }) => `w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform ${isActive ? 'nav-link-active' : ''}`}
-  >
-    {link.name}
-  </NavLink>
-));
-
-MobileNavItem.displayName = 'MobileNavItem';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -46,9 +58,14 @@ const Navbar = () => {
   ], []);
 
   const navLinkClasses = "text-lg hover:text-primary transition-colors duration-300 will-change-colors";
+  const mobileNavLinkClasses = "w-full text-left text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform";
   
   const handleMobileNavClick = useCallback(() => {
     setIsOpen(false);
+  }, []);
+
+  const handleToggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
   }, []);
 
   return (
@@ -63,7 +80,7 @@ const Navbar = () => {
               <NavItem
                 key={link.name}
                 link={link}
-                navLinkClasses={navLinkClasses}
+                className={navLinkClasses}
               />
             ))}
             <a
@@ -97,7 +114,7 @@ const Navbar = () => {
               {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
             </button>
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={handleToggleMenu}
               className="lg:hidden text-text-primary will-change-transform"
               aria-label="Toggle menu"
             >
@@ -108,11 +125,13 @@ const Navbar = () => {
       </div>
 
       <div className={`transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${isOpen ? 'max-h-screen border-t border-cyan-500/40' : 'max-h-0'}`}>
-        <nav className="container mx-auto px-6 py-4 flex flex-col items-center space-y-2">
+        <nav className="container mx-auto px-6 py-5">
+          <div className="grid grid-cols-2 gap-3 items-start bg-card-background/80 backdrop-blur-lg border border-cyan-500/20 rounded-2xl p-4 shadow-lg">
           {navLinks.map((link) => (
-            <MobileNavItem
+            <NavItem
               key={link.name}
               link={link}
+              className={mobileNavLinkClasses}
               onNavigate={handleMobileNavClick}
             />
           ))}
@@ -121,11 +140,12 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleMobileNavClick}
-            className="w-full text-center inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold text-base shadow-lg shadow-blue-500/50 hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 mt-4 will-change-transform"
+            className="w-full text-left inline-flex items-center justify-start gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-semibold text-sm shadow-lg shadow-blue-500/40 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300 hover:scale-[1.02] will-change-transform"
           >
             <FiDownload size={18} />
             Resume
           </a>
+          </div>
         </nav>
       </div>
     </header>
