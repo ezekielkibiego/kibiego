@@ -1,6 +1,6 @@
 // FILE: src/components/Navbar.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi';
@@ -10,7 +10,7 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Experience', path: '/experience' },
@@ -18,14 +18,18 @@ const Navbar = () => {
     { name: 'Skills', path: '/skills' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Contact', path: '/contact' },
-  ];
+  ], []);
   
-  const activeLinkStyle = {
+  const activeLinkStyle = useMemo(() => ({
     color: 'var(--color-primary)',
     transform: 'scale(1.05)',
-  };
+  }), []);
 
-  const navLinkClasses = "text-lg hover:text-primary transition-colors duration-300";
+  const navLinkClasses = "text-lg hover:text-primary transition-colors duration-300 will-change-colors";
+  
+  const handleMobileNavClick = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   return (
     // The header is now "sticky" instead of "fixed".
@@ -72,14 +76,14 @@ const Navbar = () => {
             </a>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-card-background text-text-primary hover:bg-cyan-500/20 transition-colors"
+              className="p-2 rounded-full bg-card-background text-text-primary hover:bg-cyan-500/20 transition-colors will-change-colors"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-text-primary"
+              className="lg:hidden text-text-primary will-change-transform"
               aria-label="Toggle menu"
             >
               {isOpen ? <FiX size={30} /> : <FiMenu size={30} />}
@@ -95,9 +99,9 @@ const Navbar = () => {
             <NavLink
               key={link.name}
               to={link.path}
-              onClick={() => setIsOpen(false)}
+              onClick={handleMobileNavClick}
               style={({ isActive }) => (isActive ? activeLinkStyle : {})}
-              className="w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors"
+              className="w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform"
             >
               {link.name}
             </NavLink>
@@ -106,8 +110,8 @@ const Navbar = () => {
             href="https://drive.google.com/file/d/14XWzUYMSD7_Ls44mMlP-Vv1ORjYG72Ae/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setIsOpen(false)}
-            className="w-full text-center inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold text-base shadow-lg shadow-blue-500/50 hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 mt-4"
+            onClick={handleMobileNavClick}
+            className="w-full text-center inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold text-base shadow-lg shadow-blue-500/50 hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 mt-4 will-change-transform"
           >
             <FiDownload size={18} />
             Resume
