@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { 
   FiChevronDown, FiAward, FiTrendingUp, FiTarget, FiUsers, FiCode, FiServer, FiCheckCircle, FiMapPin, FiClock
@@ -25,6 +25,10 @@ const calculateStats = () => {
 
 const ExperiencePage = () => {
   const [expandedId, setExpandedId] = useState(0);
+
+  const handleExpandClick = useCallback((id) => {
+    setExpandedId(prev => prev === id ? -1 : id);
+  }, []);
 
   const experiences = [
     {
@@ -217,8 +221,8 @@ const ExperiencePage = () => {
                 )}
 
                 <Motion.div
-                  className={`relative p-6 sm:p-8 bg-gradient-to-br from-card-background via-card-background/95 to-card-background/80 backdrop-blur-lg border-2 ${colors.border} rounded-3xl shadow-xl transition-all duration-300 cursor-pointer group ${colors.hover}`}
-                  onClick={() => setExpandedId(isExpanded ? -1 : exp.id)}
+                  className={`relative p-6 sm:p-8 bg-gradient-to-br from-card-background via-card-background/95 to-card-background/80 backdrop-blur-lg border-2 ${colors.border} rounded-3xl shadow-xl transition-all duration-300 cursor-pointer group ${colors.hover} will-change-transform`}
+                  onClick={() => handleExpandClick(exp.id)}
                   whileHover={{ y: -4 }}
                 >
                   {/* Timeline Dot */}
@@ -262,7 +266,7 @@ const ExperiencePage = () => {
                     </div>
 
                     {/* Description */}
-                    <p className="text-text-secondary mb-4 leading-relaxed">
+                    <p className="text-text-secondary mb-4 leading-relaxed will-change-auto">
                       {exp.description}
                     </p>
 
