@@ -1,10 +1,37 @@
 // FILE: src/components/Navbar.jsx
 
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { FiMenu, FiX, FiSun, FiMoon, FiDownload } from 'react-icons/fi';
 import logo from '../../public/images/kiblogo.png';
+
+// Memoized NavItem component to prevent re-renders
+const NavItem = memo(({ link, activeLinkStyle, navLinkClasses }) => (
+  <NavLink
+    to={link.path}
+    style={({ isActive }) => (isActive ? activeLinkStyle : {})}
+    className={navLinkClasses}
+  >
+    {link.name}
+  </NavLink>
+));
+
+NavItem.displayName = 'NavItem';
+
+// Memoized Mobile NavItem component
+const MobileNavItem = memo(({ link, activeLinkStyle, onNavigate }) => (
+  <NavLink
+    to={link.path}
+    onClick={onNavigate}
+    style={({ isActive }) => (isActive ? activeLinkStyle : {})}
+    className="w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform"
+  >
+    {link.name}
+  </NavLink>
+));
+
+MobileNavItem.displayName = 'MobileNavItem';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -31,6 +58,10 @@ const Navbar = () => {
     setIsOpen(false);
   }, []);
 
+  const handleToggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
   return (
     // The header is now "sticky" instead of "fixed".
     // This allows it to be part of the document flow and push content down.
@@ -42,14 +73,12 @@ const Navbar = () => {
           </Link>
           <nav className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <NavLink
+              <NavItem
                 key={link.name}
-                to={link.path}
-                style={({ isActive }) => (isActive ? activeLinkStyle : {})}
-                className={navLinkClasses}
-              >
-                {link.name}
-              </NavLink>
+                link={link}
+                activeLinkStyle={activeLinkStyle}
+                navLinkClasses={navLinkClasses}
+              />
             ))}
             <a
               href="https://drive.google.com/file/d/14XWzUYMSD7_Ls44mMlP-Vv1ORjYG72Ae/view?usp=sharing"
@@ -96,15 +125,12 @@ const Navbar = () => {
       <div className={`transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${isOpen ? 'max-h-screen border-t border-cyan-500/40' : 'max-h-0'}`}>
         <nav className="container mx-auto px-6 py-4 flex flex-col items-center space-y-2">
           {navLinks.map((link) => (
-            <NavLink
+            <MobileNavItem
               key={link.name}
-              to={link.path}
-              onClick={handleMobileNavClick}
-              style={({ isActive }) => (isActive ? activeLinkStyle : {})}
-              className="w-full text-center text-lg font-medium text-text-primary rounded-md py-3 hover:bg-card-background transition-colors will-change-transform"
-            >
-              {link.name}
-            </NavLink>
+              link={link}
+              activeLinkStyle={activeLinkStyle}
+              onNavigate={handleMobileNavClick}
+            />
           ))}
           <a
             href="https://drive.google.com/file/d/14XWzUYMSD7_Ls44mMlP-Vv1ORjYG72Ae/view?usp=sharing"
