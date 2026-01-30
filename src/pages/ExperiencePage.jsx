@@ -168,7 +168,7 @@ const ExperiencePage = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl opacity-60" />
       <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-gradient-to-br from-blue-500/15 to-cyan-500/15 rounded-full blur-3xl opacity-50" />
       
-      <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl pt-20 pb-16 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl pt-12 pb-16 relative z-10">
         {/* Header Section */}
         <Motion.div
           className="text-center mb-16 sm:mb-20"

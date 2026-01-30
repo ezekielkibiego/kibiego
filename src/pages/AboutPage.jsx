@@ -238,7 +238,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-background via-background/95 to-background/90 text-text-primary pt-20 pb-16 overflow-hidden">
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-background via-background/95 to-background/90 text-text-primary pt-12 pb-16 overflow-hidden">
       {/* Animated Background */}
       <BackgroundOrbs />
       

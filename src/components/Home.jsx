@@ -255,7 +255,7 @@ const Home = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-b from-background via-indigo-950/20 to-background/90 text-text-primary overflow-hidden">
+    <div className="relative min-h-screen w-full bg-gradient-to-b from-background via-indigo-950/20 to-background/90 text-text-primary pt-12 overflow-hidden">
       {/* Animated Background */}
       <FloatingParticles />
       

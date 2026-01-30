@@ -73,7 +73,7 @@ const skillGroups = [
 
 const SkillsPage = () => {
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-b from-background via-indigo-950/20 to-background/50 text-text-primary pt-20 pb-16 overflow-hidden">
+    <div className="relative min-h-screen w-full bg-gradient-to-b from-background via-indigo-950/20 to-background/50 text-text-primary pt-12 pb-16 overflow-hidden">
       {/* Animated background orbs */}
       <Motion.div 
         className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-500/50 to-indigo-600/50 rounded-full blur-3xl opacity-60" 

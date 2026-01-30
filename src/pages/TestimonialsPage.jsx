@@ -121,7 +121,7 @@ const TestimonialsPage = () => {
   const colors = colorClasses[activeTestimonial.color];
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-background via-background/95 to-background/90 text-text-primary pt-20 pb-16 overflow-hidden">
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-background via-background/95 to-background/90 text-text-primary pt-12 pb-16 overflow-hidden">
       {/* Animated background orbs - reduced animation load */}
       <Motion.div
         className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl"
@@ -156,7 +156,7 @@ const TestimonialsPage = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl pt-20 pb-16 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 max-w-screen-2xl pt-12 pb-16 relative z-10">
         {/* Header Section */}
         <Motion.div
           className="text-center mb-16"

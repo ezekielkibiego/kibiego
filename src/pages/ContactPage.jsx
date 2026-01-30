@@ -87,7 +87,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-b from-background via-background/95 to-background text-text-primary pt-20 pb-16 overflow-hidden">
+    <div className="relative min-h-screen w-full bg-gradient-to-b from-background via-background/95 to-background text-text-primary pt-12 pb-16 overflow-hidden">
       {/* Animated background orbs - static instead of continuous animation */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-500/50 to-pink-500/50 rounded-full blur-3xl opacity-60 pointer-events-none" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-full blur-3xl opacity-60 pointer-events-none" />
